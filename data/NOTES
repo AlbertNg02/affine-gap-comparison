@@ -1,0 +1,12 @@
+#Obtain whole BRCA1 sequence from here:
+https://www.ncbi.nlm.nih.gov/CCDS/CcdsBrowse.cgi?REQUEST=CCDS&DATA=CCDS11453
+
+#Obtain partial sequence by copy and paste part of above and then only with exons
+BRCA1-partial.txt
+BRCA-exons.txt
+
+#Seq1 and Seq4 should be global alignment.
+#Seq2 and Seq3 should be local alignment.
+
+#Partial TP53 sequences obtained from NCBI
+https://www.ncbi.nlm.nih.gov/nuccore/NC_018736.3?from=2539271&to=2551208&report=fasta&strand=true
