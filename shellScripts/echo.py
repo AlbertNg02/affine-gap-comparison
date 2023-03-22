@@ -27,7 +27,6 @@ import sys
 def NeedlemanWunsch_global(s1, s2, gap_open, gap_extend, mismatch, match):
     m = len(s1)
     n = len(s2)
-    max_all_score = 0
 
     #Initialize 2 2-d lists of size (m+1)rows * (n+1)columns
     matrix = [[0 for i in range(n+1)] for j in range(m+1)]  #scores
@@ -42,12 +41,12 @@ def NeedlemanWunsch_global(s1, s2, gap_open, gap_extend, mismatch, match):
     for i in range(1, m+1):
         gap = (gap_open + gap_extend) if i == 1 else gap_extend
         matrix[i][0] = matrix[i-1][0] + gap
-        hints[i][0] = "| "
+        hints[i][0] = "|"
 
     for j in range(1, n+1):
         gap = (gap_open + gap_extend) if j == 1 else gap_extend
         matrix[0][j] = matrix[0][j-1] + gap
-        hints[0][j] = "- "
+        hints[0][j] = "-"
 
     is_prev_path_a_gap = False
     for i in range(1, m+1):
@@ -75,9 +74,9 @@ def NeedlemanWunsch_global(s1, s2, gap_open, gap_extend, mismatch, match):
             if maxScore == score1:
                 hints[i][j] = "\\"
             elif maxScore == score2:
-                hints[i][j] = "- "
+                hints[i][j] = "-"
             else:
-                hints[i][j] = "| "
+                hints[i][j] = "|"
 
     print()
     # for row in matrix:
@@ -108,11 +107,11 @@ def NeedlemanWunsch_local(s1, s2, gap_open, gap_extend, mismatch, match):
     matrix[0][0] = 0
     for i in range(1, m+1):
         matrix[i][0] = 0
-        hints[i][0] = "| "
+        hints[i][0] = "|"
 
     for j in range(1, n+1):
         matrix[0][j] = 0
-        hints[0][j] = "- "
+        hints[0][j] = "-"
 
 
     is_prev_path_a_gap = False
@@ -145,9 +144,9 @@ def NeedlemanWunsch_local(s1, s2, gap_open, gap_extend, mismatch, match):
             if maxScore == score1:
                 hints[i][j] = "\\"
             elif maxScore == score2:
-                hints[i][j] = "- "
+                hints[i][j] = "-"
             else:
-                hints[i][j] = "| "
+                hints[i][j] = "|"
 
     # print()
     # for row in matrix:
@@ -175,7 +174,6 @@ def get_alignment_global(A, B, hints):
     align2 = ''
     
     while i > 0 or j > 0:
-        print("i: ", i, "j: ", j)
         
         if hints[i][j] == '\\':
             align1 = A[i-1] + align1
@@ -322,15 +320,15 @@ choice = str(sys.argv[4])
 scoring = tuple(map(int, scoring))
 print("Scoring tuple", scoring)
 
-# match_score = scoring[0]
-# mismatch_score = scoring[1]
-# gap_extend = scoring[2]
-# gap_open = scoring[3]
+match_score = scoring[0]
+mismatch_score = scoring[1]
+gap_extend = scoring[2]
+gap_open = scoring[3]
 
-gap_open = -3
-gap_extend = -1
-mismatch_score = -1
-match_score = 1
+# gap_open = -3
+# gap_extend = -1
+# mismatch_score = -1
+# match_score = 1
 # choice = "global"
 
 
