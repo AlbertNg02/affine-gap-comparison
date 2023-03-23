@@ -78,7 +78,7 @@ def NeedlemanWunsch_global(s1, s2, gap_open, gap_extend, mismatch, match):
             else:
                 hints[i][j] = "|"
 
-    print()
+    # print()
     # for row in matrix:
     #     print(row)
     # print()
@@ -212,8 +212,7 @@ def get_alignment_local(A, B, hints, opt_row, opt_col, opt_matrix):
     align1 = ''
     align2 = ''
     while i > 0 or j > 0:
-        print("i: ", i, "j: ", j)
-        print(opt_matrix[i][j])
+        #print(opt_matrix[i][j])
         if opt_matrix[i][j] == 0:
             break
         elif hints[i][j] == '\\':
@@ -336,8 +335,6 @@ gap_open = scoring[3]
 
 
 if choice == "global": 
-    print(s1)
-    print(s2)
     score, hints  = NeedlemanWunsch_global(s1, s2, gap_open, gap_extend,  mismatch_score, match_score)
     print("Gloval alignment score is", score)
     align1, align2 = get_alignment_global(s1, s2, hints)
