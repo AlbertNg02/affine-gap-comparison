@@ -155,7 +155,7 @@ def NeedlemanWunsch_local(s1, s2, gap_open, gap_extend, mismatch, match):
     # for row in hints:
     #     print(row)
     # print()
-    print(type(matrix))
+    # print(type(matrix))
     # return_matrix = matrix[:(max_all_score_row + 1)][:, :(max_all_score_col + 1)]
     return_matrix = [row[:max_all_score_col+1] for row in matrix[:max_all_score_row+1]]
 
@@ -340,15 +340,18 @@ if choice == "global":
     align1, align2 = get_alignment_global(s1, s2, hints)
     print()
     print(align1)
+    print()
     print(align2)
 else:
     score, hints, opt_matrix,opt_score_local, opt_row, opt_col = NeedlemanWunsch_local(s1, s2, gap_open, gap_extend,  mismatch_score, match_score)
 
-    print("opt row: ", opt_row)
-    print("opt col", opt_col)
+    # print("opt row: ", opt_row)
+    # print("opt col", opt_col)
     print("Local alignment score is", opt_score_local)
     align1, align2 = get_alignment_local(s1, s2, hints, opt_row, opt_col, opt_matrix)
     print()
     print(align1)
     print()
     print(align2)
+
+print("-"*100)

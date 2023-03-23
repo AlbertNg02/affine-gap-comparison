@@ -1,2 +1,2 @@
 #match	mismatch	gap-extend	gap-open
-1	-5	-3	-10
+1	-2	-1	-5
