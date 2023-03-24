@@ -32,7 +32,7 @@ Execute inside ShellScript Folder
 
 # Design choices
 
-- To keep track of where the local alignment stops, I put in the score matrix to keep track of when to stop.
+- To keep track of where the local alignment stops, the program truncates the matrix at the highscore and pass it to the local_alignemnt function
 
 # Collaboration
 
