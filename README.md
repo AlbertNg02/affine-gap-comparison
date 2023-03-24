@@ -38,7 +38,7 @@ Execute inside ShellScript Folder
 
 **Partner**: Usif
 
-**Discussed**: Paola, Emory, Alvin
+**Discussed**: Paola, Emory, Alvin, Maria
 
 
 

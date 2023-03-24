@@ -87,7 +87,7 @@ def NeedlemanWunsch_global(s1, s2, gap_open, gap_extend, mismatch, match):
     # print()
     return matrix[m][n], hints
 
-def NeedlemanWunsch_local(s1, s2, gap_open, gap_extend, mismatch, match):
+def NeedlemanWunsch_local(s1, s2, gap, mismatch, match):
     m = len(s1) 
     n = len(s2) 
     max_all_score = 0
@@ -133,7 +133,6 @@ def NeedlemanWunsch_local(s1, s2, gap_open, gap_extend, mismatch, match):
 
             # If the chosen path is not running from a diagonal path, reset the prev_path_is_gap value 
             # so we know the next gap would be a gap open and not gap extend
-            is_prev_path_a_gap = False if (maxScore == 0 or maxScore == score1) else True
 
             matrix[i][j] = maxScore
             if matrix[i][j] > max_all_score:
@@ -314,8 +313,8 @@ s2 = read_single_file_fast(sys.argv[3])
 # print(s1)
 # print(s2)
 choice = str(sys.argv[4])
-# s1 = "AAAG"
-# s2 = "AAG"
+# s1 = "AAACCCGGGGTTT"
+# s2 = "TTTCCCGGGAAA"
 scoring = tuple(map(int, scoring))
 print("Scoring tuple", scoring)
 
@@ -328,7 +327,7 @@ gap_open = scoring[3]
 # gap_extend = -1
 # mismatch_score = -1
 # match_score = 1
-# choice = "global"
+# choice = "local"
 
 
 
@@ -343,7 +342,7 @@ if choice == "global":
     print()
     print(align2)
 else:
-    score, hints, opt_matrix,opt_score_local, opt_row, opt_col = NeedlemanWunsch_local(s1, s2, gap_open, gap_extend,  mismatch_score, match_score)
+    score, hints, opt_matrix,opt_score_local, opt_row, opt_col = NeedlemanWunsch_local(s1, s2, gap_extend,  mismatch_score, match_score)
 
     # print("opt row: ", opt_row)
     # print("opt col", opt_col)
