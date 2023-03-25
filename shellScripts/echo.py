@@ -128,11 +128,10 @@ def NeedlemanWunsch_local(s1, s2, gap, mismatch, match):
             score3 = matrix[i-1][j] + gap
             
             
+            # For local, values in the matrix cannot be negative so we include the fourth option
             maxScore = max(score1, score2, score3, 0)
 
 
-            # If the chosen path is not running from a diagonal path, reset the prev_path_is_gap value 
-            # so we know the next gap would be a gap open and not gap extend
 
             matrix[i][j] = maxScore
             if matrix[i][j] > max_all_score:
@@ -155,8 +154,11 @@ def NeedlemanWunsch_local(s1, s2, gap, mismatch, match):
     #     print(row)
     # print()
     # print(type(matrix))
-    # return_matrix = matrix[:(max_all_score_row + 1)][:, :(max_all_score_col + 1)]
+
+    # We truncate the matrix down
     return_matrix = [row[:max_all_score_col+1] for row in matrix[:max_all_score_row+1]]
+    new_array_2d = [[0 for j in range(max_all_score_col + 1)] for i in range(max_all_score_row + 1)]
+
 
     return matrix[m][n], hints, return_matrix, max_all_score, max_all_score_row, max_all_score_col
 
